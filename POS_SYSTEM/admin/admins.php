@@ -12,6 +12,20 @@
 
                 <div class="card-body">
                     <?php alertMessage(); ?>
+
+                    <?php 
+                                    $admins = getAll('admins');
+                                    if(!$admins){
+
+                                        echo '<h4>Something went wrong</h4>';
+                                        return false;
+
+                                    }
+                                    if(mysqli_num_rows($admins) > 0)
+                                        {
+
+                                ?>
+
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -23,12 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                    $admins = getAll('admins');
-                                    if(mysqli_num_rows($admins) > 0)
-                                        {
-
-                                ?>
+                                
                                 <?php foreach($admins as $adminItem): ?>
 
 
@@ -46,20 +55,23 @@
 
 
                                     <?php endforeach; ?>
-                                <?php
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <?php
                                 }
                                 else{
                                     ?>
-                                    <tr>
-                                    <td colspan="4">No record found</td>
-                                    </tr>
+                                    
+                                    <h4 class="mb-0">No record found</h4>
+                                    
                                         
                                 <?php       
                                 }
                                 ?>
-                            </tbody>
-                        </table>
-                    </div>
+
                 </div>
 
     </div>
