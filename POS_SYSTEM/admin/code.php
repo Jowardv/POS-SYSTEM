@@ -52,6 +52,53 @@ if(isset($_POST['saveAdmin']))
 
 }
 
+if(isset($_POST['updateAdmin'])){
 
+
+    $adminId = validate($_POST['admin_id']);
+
+    $adminData = getByID('admins', $adminId);
+    if($adminData ['status']!=200){
+        redirect( 'admins-edit.php?id='.$adminId, 'please fill all required fields' );
+    }
+
+    $name =validate($_POST['name']);
+    $email = validate($_POST['email']);
+    $password = validate($_POST['password']);
+    $phone = validate($_POST['phone']);
+    $is_ban = isset($_POST['is_ban']) == true ? 1 : 0;
+
+
+    if($password != ''){
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+    }else{
+        $hashedPassword = $adminData['data']['password'];
+    }
+
+    if($name !='' && $email !=''  ){
+
+       $data =[
+            'name' => $name,
+            'email'=> $email,
+            'password' => $hashedPassword,
+            'phone' => $phone,
+            'is_ban' => $is_ban
+        ];
+
+        $result = update('admins',$adminId, $data);
+
+        if($result){
+                redirect( 'admins-edit.php?id='.$adminId, 'admin updated successfully' );
+        }else{
+            redirect( 'admins-edit.php?id='.$adminId, 'something went wrong' );
+        }
+    }
+    else
+    { 
+        redirect( 'admins-edit.php?id='.$adminId, 'please fill all required fields' );
+    }
+
+}
 
 ?>

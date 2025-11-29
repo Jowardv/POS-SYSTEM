@@ -130,7 +130,7 @@ function getByID( $tableName, $id){
 
                $row=mysqli_fetch_array($result);
                $response = [
-               'status' => 404,
+               'status' => 200,
                'data' => $row ,
                'message' => 'record found'
           ];
@@ -178,7 +178,33 @@ function delete ( $tableName, $id ){
 }
 
 
+function checkParamID($type){
 
+     if(isset($_GET[$type])){
+
+          if($_GET[$type] != ""){
+
+
+               return $_GET[$type];
+               
+
+          }else{
+
+               
+               return '<h5>No Id found</h5>';
+          }
+
+
+     }else{
+
+          
+          return '<h5>No Id given</h5>';
+
+
+     }
+
+
+}
 
 
 
