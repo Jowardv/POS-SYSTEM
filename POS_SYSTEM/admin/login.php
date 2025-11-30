@@ -1,4 +1,13 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php'; 
+
+if(isset($_SESSION['loggedIn'])){
+    ?>
+    <script>window.location.href = 'index.php';</script>
+    <?php
+}
+?>
+
+
 
 <div class="py-5">
     <div class="container mt-5">
