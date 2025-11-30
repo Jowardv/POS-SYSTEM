@@ -14,59 +14,60 @@
                     <?php alertMessage(); ?>
 
                     <?php 
-                                    $categories = getALL('categories');
-
+                                    $categories = getAll('categories'); 
                                     if(!$categories){
-
+                                        
                                         echo '<h4>Something went wrong</h4>';
                                         return false;
 
-                                    }
-                                    if(mysqli_num_rows($categories) > 0)
+                                     }
+                                     if(mysqli_num_rows($categories) > 0)
                                         {
 
-                                ?>
+                                     ?>
+ 
+                                     <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                 <thead>
+                             <tr>
+                                       <th>ID</th>
+                                     <th>Name</th>
+                                     <th>Status</th>
+                                     <th>Action</th>
+                                      </tr>
+                                </thead>
+                             <tbody>
+                         <?php
+            if(mysqli_num_rows($categories) > 0){
+                foreach($categories as $item){
+        ?>
+            <tr>
+                <td><?= $item['id']; ?></td>
+                <td><?= $item['name']; ?></td>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                <?php foreach($categories as $item): ?>
+                <td>
+                    <?= $item['status'] == "0" ? "Visible" : "Hidden"; ?>
+                </td>
 
-
-                                <tr>
-                                    <td><?=$item['id']?></td>
-                                    <td><?=$item['name']?></td>
-
-                                    <?php
-                                  if($item['status'] == 1){
-                                  echo '<span class="badge bg-danger">Hidden</span>';
-                                 }else{
-                                   echo '<span class="badge bg-primary">Visible</span>';
-                                   }
-                                  ?>
-
-                                    <td>
-                                        <a href="categories-edit.php?id=<?=$item['id']?>" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="categories-delete.php?id=<?=$item['id']?>" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-
-                                </tr>
-
-
-
-                                    <?php endforeach; ?>
-                                
-                            </tbody>
-                        </table>
+                <td>
+                    <a href="categories-edit.php?id=<?= $item['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+                    <a href="categories-delete.php?id=<?= $item['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        <?php
+                }
+            } else {
+        ?>
+            <tr>
+                <td colspan="4">
+                    <h4 class="mb-0">No record found</h4>
+                </td>
+            </tr>
+        <?php
+            }
+        ?>
+    </tbody>
+</table>
                     </div>
 
                     <?php
