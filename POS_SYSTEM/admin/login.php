@@ -1,10 +1,4 @@
 <?php include 'includes/header.php'; 
-
-if(isset($_SESSION['loggedIn'])){
-    ?>
-    <script>window.location.href = 'index.php';</script>
-    <?php
-}
 ?>
 
 
