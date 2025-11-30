@@ -4,8 +4,8 @@
     <div class="card mt-4 shadow">
 
         <div class="card-header">
-            <h4 class="mb-0">Categories
-                <a href="categories-create.php" class="btn btn-primary float-end">Add Category</a>
+            <h4 class="mb-0">Products
+                <a href="products-create.php" class="btn btn-primary float-end">Add Product</a>
             </h4>
         </div>
 
@@ -13,12 +13,12 @@
             <?php alertMessage(); ?>
 
             <?php
-                $categories = getALL('categories');
+                $products = getALL('products');
 
-                if (!$categories) {
+                if (!$products) {
                     echo '<h4>Something went wrong</h4>';
                 } else {
-                    if (mysqli_num_rows($categories) > 0) {
+                    if (mysqli_num_rows($products) > 0) {
             ?>
 
             <div class="table-responsive">
@@ -26,20 +26,30 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($item = mysqli_fetch_assoc($categories)) { ?>
+                        <?php while($item = mysqli_fetch_assoc($products)) { ?>
                         <tr>
                             <td><?= $item['id']; ?></td>
+                            <td> 
+                                <img src="../<?= $item['image']; ?>" style="width: 50px; height: 50px;" alt="Img">
+                            </td>
                             <td><?= htmlspecialchars($item['name']); ?></td>
                             <td><?= $item['status'] == "0" ? "Visible" : "Hidden"; ?></td>
                             <td>
-                                <a href="categories-edit.php?id=<?= $item['id']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                <a href="categories-delete.php?id=<?= $item['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="products-edit.php?id=<?= $item['id']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                <a
+                                href="products-delete.php?id=<?= $item['id']; ?>" 
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this image?');"
+                                >
+                                Delete
+                            </a>
                             </td>
                         </tr>
                         <?php } ?>
