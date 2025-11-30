@@ -1,53 +1,38 @@
-
-
-<?php include("includes/header.php"); ?>
+<?php include('../config/function.php'); ?>
+<?php include('../includes/header.php'); ?>
 
 <div class="container-fluid px-4">
-    <div class="'card mt-4 shadow">
+    <div class="card mt-4 shadow">
+        <div class="card-header">
+            <h4>
+                Add Category
+                <a href="categories.php" class="btn btn-danger float-end">Back</a>
+            </h4>
+        </div>
 
-            <div class="card-header">
-                <h4 class="mb-0">Add Category
-                    <a href="categories.php" class="btn btn-primary float-end">Back</a>
-                </h4>
+        <div class="card-body">
+            <form action="code.php" method="POST">
 
-            </div>
-                <div class="card-body">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input type="text" name="name" required class="form-control" />
+                </div>
 
-                    <?php alertMessage(); ?>   
+                <div class="mb-3">
+                    <label>Description</label>
+                    <textarea name="description" class="form-control"></textarea>
+                </div>
 
-                 <form action="code.php" method="POST">
+                <div class="mb-3">
+                    <label>Status (0 = Visible, 1 = Hidden)</label>
+                    <input type="checkbox" name="status" value="1">
+                </div>
 
-                 <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="">Name *</label>
-                            <input type="text" name="name" required class="form-control"/>
-                        </div>
+                <button type="submit" name="saveCategory" class="btn btn-primary">Save</button>
 
-                         <div class="col-md-12 mb-3">
-                            <label for="">Description</label>
-                            <input type="text" name="description" required class="form-control"/>
-                            <textarea name="description" class="form-control" rows="3"></textarea>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label>Status (UnChecked=Visible, Checked=Hidden)</label>
-                         <br/>
-                         <input type="checkbox" name="status" style="width:30px;height:30px;">
-                         </div>
-                          <div class="col-md-6 mb-3 text-end">
-                         <br/>
-                         </div>
-                         <div class="col-md-12 mb-3 text-end">
-                            <button type="submit" name="saveCategory" class="btn btn-primary">save</button>
-                        </div>
-                 </div>
-
-                 </form>   
-         </div>
+            </form>
+        </div>
     </div>
 </div>
 
-
-
-
-<?php include("includes/footer.php"); ?>
+<?php include('../includes/footer.php'); ?>
