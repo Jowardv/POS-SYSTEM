@@ -14,7 +14,8 @@
                     <?php alertMessage(); ?>
 
                     <?php 
-                                    $categories = getAll("categories");
+                                    $categories = getALL('categories');
+
                                     if(!$categories){
 
                                         echo '<h4>Something went wrong</h4>';
