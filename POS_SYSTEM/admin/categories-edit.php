@@ -17,28 +17,55 @@
 
                  <form action="code.php" method="POST">
 
+                 <?php
+                 $parmValue =  checkParamID('id');
+                 if(!is_numeric($parmValue)){
+                     echo '<h5>' .$parmValue. '</h5>';
+                     return false;
+
+
+                 }
+                 $category = getByID('categories', $parmValue);
+                 if($category['status'] == 200)
+                 {
+                 ?>
+
                  <div class="row">
-                        <div class="col-md-12 mb-3">
+                 </div>
+                 <?php
+                 }
+                 else
+                 {
+                       echo '<h5>' .$category['message']. '</h5>';
+                       return false;
+                 
+                 }  
+                ?>
+
+                    input type="hidden" name="categoryId" value="<?php echo $category['data']['id']; ?> ">
+
+                    <div class="row">
+                    <div class="col-md-12 mb-3">
                             <label for="">Name *</label>
-                            <input type="text" name="name" required class="form-control"/>
+                            <input type="text" name="name" value= "<? $category['data']['name'];?> "required class="form-control"/>
                         </div>
 
                          <div class="col-md-12 mb-3">
                             <label for="">Description</label>
                             <input type="text" name="description" required class="form-control"/>
-                            <textarea name="description" class="form-control" rows="3"></textarea>
+                            <textarea name="description" class="form-control" rows="3"><? $category['data']['description'];?> </textarea>
                         </div>
 
                         <div class="col-md-6">
                             <label>Status (UnChecked=Visible, Checked=Hidden)</label>
                          <br/>
-                         <input type="checkbox" name="status" style="width:30px;height:30px;">
+                         <input type="checkbox" name="status" <? $category['data']['status'] == true ? 'checked': '';?> style="width:30px;height:30px;">
                          </div>
                           <div class="col-md-6 mb-3 text-end">
                          <br/>
                          </div>
                          <div class="col-md-12 mb-3 text-end">
-                            <button type="submit" name="saveCategory" class="btn btn-primary">save</button>
+                            <button type="submit" name="updateCategory" class="btn btn-primary">Update</button>
                         </div>
                  </div>
 
