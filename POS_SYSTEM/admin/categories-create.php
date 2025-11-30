@@ -37,7 +37,7 @@
                           <div class="col-md-6 mb-3 text-end">
                          <br/>
                          </div>
-                         <div class="col-md-6 mb-3 text-end">
+                         <div class="col-md-12 mb-3 text-end">
                             <button type="submit" name="saveCategory" class="btn btn-primary">save</button>
                         </div>
                  </div>
