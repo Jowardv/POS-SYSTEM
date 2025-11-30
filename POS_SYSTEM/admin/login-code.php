@@ -30,8 +30,8 @@ if(isset($_POST['loginBtn']))
                   $_SESSION['loggedInUser'] = [
                     'user_id' => $row['id'],
                     'name' => $row['name'],
-                    'email' => $row['email']
-                    'phone' => $row['phone']
+                    'email' => $row['email'],
+                    'phone' => $row['phone'],
                   ]; 
           
                   if(password_verify($password, $hashedPassword))
@@ -56,12 +56,6 @@ if(isset($_POST['loginBtn']))
 } else {
     redirect('login.php','Please fill all fields');
 }
-
-
-
-
-
-                
 
 
 
