@@ -14,7 +14,7 @@
                     <?php alertMessage(); ?>
 
                     <?php 
-                                    $admins = getAll("admins");
+                                    $admins = getAll('admins');
                                     if(!$admins){
 
                                         echo '<h4>Something went wrong</h4>';

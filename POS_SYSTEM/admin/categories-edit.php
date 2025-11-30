@@ -42,7 +42,7 @@
                  }  
                 ?>
 
-                    <input type="hidden" name="categoryId" value="<?php echo $category['data']['id']; ?>">
+                    <input type="hidden" name="categoryId" value="<?=  $category['data']['id']; ?>">
 
                     <div class="row">
                     <div class="col-md-12 mb-3">
