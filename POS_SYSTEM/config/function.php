@@ -207,6 +207,15 @@ function checkParamID($type){
 }
 
 
+     function logoutSession(){
+          unset($_SESSION['loggedIn']);
+          unset($_SESSION['loggedInUser']);
+
+          
+          header('Location: login.php');
+     }
+
+
 
 
 
