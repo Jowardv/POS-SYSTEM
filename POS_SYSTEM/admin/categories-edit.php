@@ -1,62 +1,80 @@
-<?php
-    include('../middleware/adminMiddleware.php');
-    include('includes/header.php');
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        $category = getByID("categories", $id);
 
-        if (mysqli_num_rows($categories) > 0) {
-            $data = mysqli_fetch_array($categories);
-        } else {
-            echo "<h4>No Record Found</h4>";
-            die();
-        }
-    } else {
-        echo "<h4>Id Missing from URL</h4>";
-        die();
-    }
-?>
+<?php include("includes/header.php"); ?>
 
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-header">
-            <h4>Edit Category
-                <a href="categories.php" class="btn btn-primary float-end">Back</a>
-            </h4>
-        </div>
-        <div class="card-body">
+<div class="container-fluid px-4">
+    <div class="'card mt-4 shadow">
 
-            <form action="code.php" method="POST">
-                <input type="hidden" name="categoryId" value="<?= $data['id']; ?>">
+            <div class="card-header">
+                <h4 class="mb-0">Edit Category
+                    <a href="categories.php" class="btn btn-primary float-end">Back</a>
+                </h4>
 
-                <div class="mb-3">
-                    <label class="form-label">Name *</label>
-                    <input type="text" name="name" value="<?= $data['name']; ?>" class="form-control" required>
-                </div>
+            </div>
+                <div class="card-body">
 
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea name="description" rows="3" class="form-control"><?= $data['description']; ?></textarea>
-                </div>
+                    <?php alertMessage(); ?>   
 
-                <div class="mb-3">
-                    <label class="form-label">
-                        Status (Unchecked = Visible, Checked = Hidden)
-                    </label><br>
+                 <form action="code.php" method="POST">
 
-                    <input type="checkbox" name="status" 
-                        <?= $data['status'] == "1" ? "checked" : "" ?> 
-                        style="width:30px; height:30px;">
-                </div>
+                 <?php
+                 $parmValue =  checkParamID('id');
+                 if(!is_numeric($parmValue)){
+                     echo '<h5>' .$parmValue. '</h5>';
+                     return false;
 
-                <div class="mb-3">
-                    <button type="submit" name="update_category" class="btn btn-primary float-end">Update</button>
-                </div>
-            </form>
 
-        </div>
+                 }
+                 $category = getByID('categories', $parmValue);
+                 if($category['status'] == 200)
+                 {
+                 ?>
+
+                 <div class="row">
+                 </div>
+                 <?php
+                 }
+                 else
+                 {
+                       echo '<h5>' .$category['message']. '</h5>';
+                       return false;
+                 
+                 }  
+                ?>
+
+                    <input type="hidden" name="categoryId" value="<?php echo $category['data']['id']; ?>">
+
+                    <div class="row">
+                    <div class="col-md-12 mb-3">
+                            <label for="">Name *</label>
+                            <input type="text" name="name" value= "<? $category['data']['name'];?> "required class="form-control"/>
+                        </div>
+
+                         <div class="col-md-12 mb-3">
+                            <label for="">Description</label>
+                            <input type="text" name="description" required class="form-control"/>
+                            <textarea name="description" class="form-control" rows="3"><? $category['data']['description'];?> </textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Status (UnChecked=Visible, Checked=Hidden)</label>
+                         <br/>
+                         <input type="checkbox" name="status" <? $category['data']['status'] == true ? 'checked': '';?> style="width:30px;height:30px;">
+                         </div>
+                          <div class="col-md-6 mb-3 text-end">
+                         <br/>
+                         </div>
+                         <div class="col-md-12 mb-3 text-end">
+                            <button type="submit" name="updateCategory" class="btn btn-primary">Update</button>
+                        </div>
+                 </div>
+
+                 </form>   
+         </div>
     </div>
 </div>
 
-<?php include('includes/footer.php'); ?>
+
+
+
+<?php include("includes/footer.php"); ?>
