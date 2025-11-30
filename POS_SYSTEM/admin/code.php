@@ -128,9 +128,9 @@ if(isset($_POST['saveCategory']))
 
         $result = insert('categories', $data);
         if($result){
-                redirect( 'categories.php', 'Category created successfully' );
+                redirect( 'categories.php', 'Category created successfully!' );
         }else{
-            redirect( 'categories-create.php', 'Something went wrong' );
+                 redirect( 'categories-create.php', 'Something went wrong!' );
         }
 
 
