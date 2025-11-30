@@ -54,7 +54,7 @@
                 <div class="col-md-12 mb-3">
                     <label for="">Description</label>
 
-                  
+                    <!-- Remove extra input (you had two description fields) -->
                     <textarea name="description" class="form-control" rows="3">
 <?= $category['data']['description']; ?>
                     </textarea>
@@ -64,10 +64,10 @@
                     <label>Status (UnChecked=Visible, Checked=Hidden)</label>
                     <br/>
 
-                    <input type="checkbox" name="status" <?= $category['data']['status'] == 1 ? 'checked' : '';?> style="width:30px;height:30px;">
+                    <input type="checkbox" name="status"
+                    <?= $category['data']['status'] == 1 ? 'checked' : '' ?>
+                    style="width:30px;height:30px;">
 
-
-                        style="width:30px;height:30px;">
                 </div>
 
                 <div class="col-md-6 mb-3 text-end">
