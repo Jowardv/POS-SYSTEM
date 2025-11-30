@@ -64,8 +64,9 @@
                     <label>Status (UnChecked=Visible, Checked=Hidden)</label>
                     <br/>
 
-                    <input type="checkbox" name="status"
-                        <?= $category['data']['status'] == true ? 'checked' : 'unchecked'; ?>
+                    <input type="checkbox" name="status" <?= $category['data']['status'] == 1 ? 'checked' : '';?> style="width:30px;height:30px;">
+
+
                         style="width:30px;height:30px;">
                 </div>
 
