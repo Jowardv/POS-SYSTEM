@@ -40,9 +40,9 @@
                 <?php else: ?>
 
                     <!-- If not logged in: show Login -->
-                    <li class="nav-item">
+                  <!--  <li class="nav-item">
                         <a class="nav-link" href="login.php">Login</a>
-                    </li>
+                    </li> -->
 
                 <?php endif; ?>
 

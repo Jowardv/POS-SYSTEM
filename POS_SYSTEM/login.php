@@ -1,11 +1,19 @@
-<?php include 'includes/header.php'; 
+<?php include ('includes/header.php');
+
+if(isset($_SESSION['loggedIn'])){
+?>
+<script>window.location.href = "index.php";</script>
+<?php   
+
+}
+
 ?>
 
 
 
 <div class="py-5">
     <div class="container mt-5">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-6">
 
                 <div class="card shadow rounded-4">
@@ -38,15 +46,11 @@
                     </div>
                 </div>
 
-                <!-- Outside card -->
-                <div class="text-center mt-4">
-                    <h1>Welcome to POS System</h1>
-                    <a href="login.php" class="btn btn-primary mt-3">Login</a>
-                </div>
+                
 
             </div>
         </div>
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include ('includes/footer.php'); ?>

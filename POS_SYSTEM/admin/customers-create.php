@@ -6,8 +6,8 @@
     <div class="card mt-4 shadow">
 
             <div class="card-header">
-                <h4 class="mb-0">Add Category
-                    <a href="categories.php" class="btn btn-primary float-end">Back</a>
+                <h4 class="mb-0">Add Customer
+                    <a href="customer.php" class="btn btn-primary float-end">Back</a>
                 </h4>
 
             </div>
@@ -23,9 +23,14 @@
                             <input type="text" name="name" required class="form-control"/>
                         </div>
 
+                        <div class="col-md-12 mb-3">
+                            <label for="">Email Id </label>
+                            <input type="email" name="email"  class="form-control"/>
+                        </div>
+
                          <div class="col-md-12 mb-3">
-                            <label for="">Description</label>
-                                     <textarea name="description" class="form-control" rows="3"></textarea>
+                            <label for="">Phone </label>
+                            <input type="number" name="phone"  class="form-control"/>
                         </div>
 
                         <div class="col-md-6">
@@ -37,7 +42,7 @@
                          <br/>
                          </div>
                          <div class="col-md-12 mb-3 text-end">
-                            <button type="submit" name="saveCategory" class="btn btn-primary">save</button>
+                            <button type="submit" name="saveCustomer" class="btn btn-primary">save</button>
                         </div>
                  </div>
 

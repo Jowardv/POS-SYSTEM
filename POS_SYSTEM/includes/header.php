@@ -1,3 +1,8 @@
+<?php
+require 'config/function.php';
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +14,7 @@
  
 </head>
 
-  <body></body>
+  <body>
 
 
-<?php include ('navbar.php'); ?>
+<?php include ('includes/navbar.php'); ?>

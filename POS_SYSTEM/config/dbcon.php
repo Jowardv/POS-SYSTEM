@@ -1,5 +1,5 @@
 <?php
-// ...existing code...
+
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME','root');
 define('DB_PASSWORD','');
@@ -13,4 +13,3 @@ if (mysqli_connect_errno()) {
     die("Database connection failed: (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
 }
 ?>
-// ...existing code...
