@@ -6,7 +6,7 @@ define('DB_PASSWORD','');
 define('DB_DATABASE','pointofsale');
 
 // Use default MySQL port (omit explicit 5th argument) so mysqli uses the server default (usually 3306)
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE, 3307);
+$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE, 3306);
 
 // Check connection
 if (mysqli_connect_errno()) {

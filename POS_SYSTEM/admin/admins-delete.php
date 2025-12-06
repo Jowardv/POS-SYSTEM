@@ -8,7 +8,7 @@ if (is_numeric($paraResultId)) {
 
     $adminId = validate($paraResultId);
 
-    $result = delete('admins', $adminId);
+    $result = delete(tableName: 'admins', $adminId);
     if ($result) {
         redirect('admins.php', 'admin deleted successfully');
     } else {
